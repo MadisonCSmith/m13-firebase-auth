@@ -3,7 +3,6 @@ $(function() {
 
     // Initialize Firebase
 
-    <script>
       var config = {
         apiKey: "AIzaSyBxZX_duIgySZe2d9prkqBYsS03dlV_JrE",
         authDomain: "slick-8bd88.firebaseapp.com",
@@ -12,7 +11,11 @@ $(function() {
         messagingSenderId: "187887893385"
       };
       firebase.initializeApp(config);
-    </script>
+
+    $("#signup-form").submit(function(event) { // do this- what does it do?
+        event.preventDefault();
+        signUp();
+    })
 
     // Sign Up: Function to create account on firebase, then redirect to index.html
     var signUp = function() {
@@ -22,19 +25,20 @@ $(function() {
         // Get email, password, and display name
         var email = $('#email').val();
         var password = $("#password").val();
-        var userName = $"#user_name").val();
+        var userName = $("#user_name").val();
 
 
 
         // Create user, then set the user's display name
         firebase.auth().createUserWithEmailAndPassword(email, password).then(function(user){
-            //create user
-                
-            //.then create username
-        });
-
-        // Set display name
-
+                user.updateProfile({
+                    userName: userName   //!!
+                }).then(function() {
+                    window.location= 'index.html';
+                });
+            }).catch(function(error) {
+                alert(error.message);
+            });
     };
 
     // SignIn: Function to authenticate on Firebase, then redirect to index.html
