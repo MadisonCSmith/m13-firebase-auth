@@ -3,14 +3,37 @@ $(function() {
 
     // Initialize Firebase
 
+    <script>
+      var config = {
+        apiKey: "AIzaSyBxZX_duIgySZe2d9prkqBYsS03dlV_JrE",
+        authDomain: "slick-8bd88.firebaseapp.com",
+        databaseURL: "https://slick-8bd88.firebaseio.com",
+        storageBucket: "slick-8bd88.appspot.com",
+        messagingSenderId: "187887893385"
+      };
+      firebase.initializeApp(config);
+    </script>
+
     // Sign Up: Function to create account on firebase, then redirect to index.html
     var signUp = function() {
+        
+
+
         // Get email, password, and display name
+        var email = $('#email').val();
+        var password = $("#password").val();
+        var userName = $"#user_name").val();
+
 
 
         // Create user, then set the user's display name
+        firebase.auth().createUserWithEmailAndPassword(email, password).then(function(user){
+            //create user
+                
+            //.then create username
+        });
 
-                // Set display name
+        // Set display name
 
     };
 
